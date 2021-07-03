@@ -5,14 +5,11 @@ const name = ({ user }) => {
   return (
     <>
       <div>{username}</div>
-      <div>
-        <img src={user.avatar_url} alt="user-avatar" />
-      </div>
     </>
   );
 };
 
-export const getServerSideProps = async ({ query }) => {
+name.getInitialProps = async ({ query }) => {
   // console.log(query);
   const { name } = query;
   try {
@@ -20,14 +17,15 @@ export const getServerSideProps = async ({ query }) => {
     if (res.status === 200) {
       const user = await res.json();
       console.log(user);
-      return { props: { user } };
+      return { user };
     }
+    return {};
   } catch (e) {
     console.log(e);
     return {};
   }
 
-  return {}; // to avoid eslint(consistent-return) problems.
+  // return {}; // to avoid eslint(consistent-return) problems.
 };
 
 export default name;
