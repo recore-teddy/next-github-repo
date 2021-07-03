@@ -1,15 +1,17 @@
-import fetch from "isomorphic-unfetch";
+import Profile from "../../components/Profile";
 
 const name = ({ user }) => {
-  const username = user && user.name;
+  if (!user) {
+    return null;
+  }
   return (
     <>
-      <div>{username}</div>
+      <Profile user={user} />
     </>
   );
 };
 
-name.getInitialProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   // console.log(query);
   const { name } = query;
   try {
@@ -17,15 +19,13 @@ name.getInitialProps = async ({ query }) => {
     if (res.status === 200) {
       const user = await res.json();
       console.log(user);
-      return { user };
+      return { props: { user } };
     }
-    return {};
+    return { props: {} };
   } catch (e) {
     console.log(e);
-    return {};
+    return { props: {} };
   }
-
-  // return {}; // to avoid eslint(consistent-return) problems.
 };
 
 export default name;
