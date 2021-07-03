@@ -26,6 +26,8 @@ export const getServerSideProps = async ({ query }) => {
     console.log(e);
     return {};
   }
+
+  return {}; // to avoid eslint(consistent-return) problems.
 };
 
 export default name;
