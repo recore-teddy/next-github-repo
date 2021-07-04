@@ -21,7 +21,9 @@ const name = ({ user, repos }) => {
 };
 
 export const getServerSideProps = async ({ query }) => {
+  console.log("query", query);
   const { name, page = 1 } = query;
+  console.log("name", name, "page", page);
   try {
     let user;
     let repos;

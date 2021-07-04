@@ -90,7 +90,8 @@ const style = css`
 const Repositories = ({ user, repos }) => {
   const router = useRouter();
   const { page = "1" } = router.query;
-  console.log("page", page);
+  console.log("router.query", router.query);
+  // console.log("page", page);
   if (!user || !repos) {
     return null;
   }
