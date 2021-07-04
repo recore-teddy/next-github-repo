@@ -59,6 +59,10 @@ const Profile = ({ user }) => {
         <p className="profile-user-login">{user.login}</p>
         <p className="profile-user-bio">{user.bio}</p>
         <p className="profile-user-info">
+          <GoOrganization size={16} color="#6a737d" />
+          <span className="profile-user-info-text">{user.location}</span>
+        </p>
+        <p className="profile-user-info">
           <GoLocation size={16} color="#6a737d" />
           <span className="profile-user-info-text">{user.location}</span>
         </p>
